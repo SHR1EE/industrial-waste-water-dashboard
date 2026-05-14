@@ -77,147 +77,87 @@ export const industries = [
       }
     ]
   },
-  {
-    id: 'textile',
-    name: 'Textile & Dyeing',
-    subCategories: [
-      {
-        id: 'pre-treatment',
-        name: 'Pre-treatment',
-        processStages: [
-          'Desizing',
-          'Scouring',
-          'Bleaching',
-          'Mercerizing'
-        ],
-        pollutants: [
-          'Alkaline chemicals',
-          'Detergents',
-          'Starch',
-          'Hydrogen peroxide',
-          'Suspended solids'
-        ],
-        challenges: [
-          "Neutralizing extremely high pH levels caused by caustic soda usage",
-          "Reducing high TDS generated from chemical washing operations",
-          "Managing fluctuating alkalinity during batch processing",
-          "Minimizing sludge generation during neutralization"
-        ],
-        wastewaterCharacteristics: {
-          nature: 'Highly alkaline with moderate organic load',
-          color: 'Low to moderate',
-          biodegradability: 'Medium'
-        },
-        typicalValues: {
-          cod: 1800,
-          bod: 600,
-          ph: 11.5,
-          tss: 300,
-          tds: 3000,
-          conductivity: 4200,
-          temperature: 38
-        },
-        realisticRanges: {
-          ph: [10.0, 12.5],
-          bod: [300, 1200],
-          cod: [1000, 3500],
-          tss: [150, 800],
-          tds: [2000, 6000]
-        }
-      },
-
-      {
-        id: 'dyeing-printing',
-        name: 'Dyeing & Printing',
-        processStages: [
-          'Reactive Dyeing',
-          'Pigment Printing',
-          'Washing',
-          'Color Fixing'
-        ],
-        pollutants: [
-          'Synthetic dyes',
-          'Salts',
-          'Heavy metals',
-          'Pigments',
-          'Urea',
-          'Surfactants'
-        ],
-        challenges: [
-          "Complete color removal to meet visual discharge standards",
-          "Managing extremely high salt concentrations from reactive dyes",
-          "Preventing even small dye concentrations from visibly contaminating water bodies",
-          "Treating non-biodegradable dye compounds resistant to biological treatment"
-        ],
-        wastewaterCharacteristics: {
-          nature: 'Highly colored with high dissolved salts',
-          color: 'Very high',
-          biodegradability: 'Low to medium'
-        },
-        typicalValues: {
-          cod: 2500,
-          bod: 800,
-          ph: 9.5,
-          tss: 400,
-          tds: 6000,
-          conductivity: 8500,
-          temperature: 42
-        },
-        realisticRanges: {
-          ph: [8.0, 11.0],
-          bod: [500, 2000],
-          cod: [1500, 7000],
-          tss: [250, 1500],
-          tds: [4000, 12000]
-        }
-      },
-
-      {
-        id: 'finishing',
-        name: 'Finishing',
-        processStages: [
-          'Softening',
-          'Coating',
-          'Waterproofing',
-          'Flame Retardant Treatment'
-        ],
-        pollutants: [
-          'Resins',
-          'PFAS',
-          'Formaldehyde compounds',
-          'Silicones',
-          'Micro-pollutants'
-        ],
-        challenges: [
-          "Removing persistent micro-pollutants from treated water",
-          "Treating PFAS and water-resistant coating chemicals",
-          "Reducing toxicity from finishing auxiliaries",
-          "Managing low-biodegradability wastewater streams"
-        ],
-        wastewaterCharacteristics: {
-          nature: 'Chemically complex with persistent organics',
-          color: 'Moderate',
-          biodegradability: 'Low'
-        },
-        typicalValues: {
-          cod: 3000,
-          bod: 1000,
-          ph: 8.0,
-          tss: 500,
-          tds: 4000,
-          conductivity: 5200,
-          temperature: 36
-        },
-        realisticRanges: {
-          ph: [6.5, 9.0],
-          bod: [700, 2500],
-          cod: [2000, 9000],
-          tss: [300, 1800],
-          tds: [2500, 7000]
-        }
+{
+  id: 'textile',
+  name: 'Textile & Dyeing',
+  subCategories: [
+    {
+      id: 'cotton-processing',
+      name: 'Cotton Processing',
+      challenges: [
+        "Managing extremely high salt concentrations from reactive dyeing operations",
+        "Reducing excessive freshwater consumption during repeated washing cycles"
+      ],
+      typicalValues: {
+        cod: 2500,
+        bod: 900,
+        ph: 10.5,
+        tss: 700,
+        tds: 6000
       }
-    ]
-  },
+    },
+    {
+      id: 'synthetic-processing',
+      name: 'Synthetic Textile Processing',
+      challenges: [
+        "Treating non-biodegradable synthetic dye compounds",
+        "Removing persistent organic finishing chemicals and dye carriers"
+      ],
+      typicalValues: {
+        cod: 4000,
+        bod: 700,
+        ph: 8.5,
+        tss: 500,
+        tds: 4500
+      }
+    },
+    {
+      id: 'wool-processing',
+      name: 'Wool Processing',
+      challenges: [
+        "Removing lanolin-rich grease and suspended organic matter",
+        "Handling extremely high biodegradable organic loads from scouring"
+      ],
+      typicalValues: {
+        cod: 6000,
+        bod: 3000,
+        ph: 7.8,
+        tss: 1200,
+        tds: 3500
+      }
+    },
+    {
+      id: 'denim-washing',
+      name: 'Denim & Garment Washing',
+      challenges: [
+        "Controlling indigo dye discharge into nearby water bodies",
+        "Managing sludge and suspended solids from stone washing processes"
+      ],
+      typicalValues: {
+        cod: 5000,
+        bod: 1800,
+        ph: 9.2,
+        tss: 2000,
+        tds: 5000
+      }
+    },
+    {
+      id: 'textile-printing',
+      name: 'Textile Printing',
+      challenges: [
+        "Removing persistent pigment-based color compounds from wastewater",
+        "Treating solvent-rich effluents with very high COD concentrations"
+      ],
+      typicalValues: {
+        cod: 7000,
+        bod: 2200,
+        ph: 8.8,
+        tss: 900,
+        tds: 4000
+      }
+    }
+  ]
+},
   {
     id: 'pulp-paper',
     name: 'Pulp & Paper Mills',
