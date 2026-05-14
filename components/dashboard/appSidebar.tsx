@@ -7,6 +7,7 @@ import { industries } from "@/data/industries";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
@@ -81,6 +82,18 @@ export default function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <div className="flex items-center gap-3 px-3 py-2">
+              {/* <UserButton /> */}
+              <span className="text-sm font-medium text-[var(--ink)] truncate">
+                User Profile BUtton
+              </span>
+            </div>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
