@@ -1,33 +1,46 @@
-// --- CHANGED PART START: Rebuilt entire dataset ---
-// 1. Removed strict `as WaterParameters` typescript casting to fix the TS(2352) compilation error.
-// 2. Added all 17 categories with proper sub-categories.
-// 3. Guaranteed a `challenges` array and `typicalValues` object exist for EVERY entry to prevent crashes.
-// --- CHANGED PART END -----------------------------
+// Complete dataset with all 17 Categories and 3+ Sub-categories each.
+// Includes realistic baseline parameter values for the interactive sliders.
 
 export const industries = [
   {
     id: 'pharma',
-    name: 'Pharmaceutical',
+    name: 'Pharmaceutical Industry',
     subCategories: [
       {
         id: 'api-bulk',
         name: 'Bulk Drug (API)',
         challenges: [
-          "High Refractory COD management (non-biodegradable organics)",
-          "Recovery and treatment of complex solvents (Methanol/Toluene)",
-          "Treatment of biocidal antibiotic residues that kill active sludge"
+          "Managing 'Refractory COD' (chemicals that won't break down biologically)",
+          "Recovering expensive and complex solvents"
         ],
         typicalValues: { cod: 12000, bod: 4000, ph: 6.5, tss: 800, tds: 5000 }
       },
       {
         id: 'formulation',
-        name: 'Formulation & Fill-Finish',
+        name: 'Formulation',
         challenges: [
-          "High variability in batch-wise effluent (sugars vs acids)",
-          "Management of active ingredient cross-contamination",
-          "High detergent and surfactant load from equipment cleaning"
+          "Handling high variability of batches",
+          "Managing erratic pH shifts (one day sugary, the next acidic)"
         ],
         typicalValues: { cod: 1500, bod: 400, ph: 7.2, tss: 300, tds: 1200 }
+      },
+      {
+        id: 'biologics',
+        name: 'Biologics',
+        challenges: [
+          "Maintaining sterile conditions to prevent contamination",
+          "Preventing 'wild' bacteria from destroying treatment reactors"
+        ],
+        typicalValues: { cod: 8000, bod: 4500, ph: 6.8, tss: 1200, tds: 2500 }
+      },
+      {
+        id: 'rd-labs',
+        name: 'R&D Labs',
+        challenges: [
+          "Dealing with completely unknown chemical mixtures",
+          "Treating very small but highly concentrated and toxic volumes"
+        ],
+        typicalValues: { cod: 3000, bod: 500, ph: 7.0, tss: 200, tds: 4000 }
       }
     ]
   },
@@ -39,9 +52,8 @@ export const industries = [
         id: 'molasses',
         name: 'Molasses-Based',
         challenges: [
-          "Achieving Zero Liquid Discharge (ZLD) due to extreme toxicity",
-          "Treatment of high-color melanoidins (dark brown effluent)",
-          "Extreme BOD/COD loading from spent wash"
+          "Achieving 'Zero Liquid Discharge' (ZLD) due to extreme toxicity",
+          "Spent wash is too concentrated to ever be discharged into natural waters"
         ],
         typicalValues: { cod: 100000, bod: 45000, ph: 4.2, tss: 4000, tds: 25000 }
       },
@@ -49,11 +61,19 @@ export const industries = [
         id: 'grain',
         name: 'Grain-Based',
         challenges: [
-          "High suspended solids and dissolved proteins (mash waste)",
-          "Fouling of ultra-filtration membranes",
-          "Management of yeast sludge"
+          "Efficiently separating fine suspended proteins",
+          "Preventing mash waste from clogging standard biological filters"
         ],
         typicalValues: { cod: 40000, bod: 18000, ph: 4.5, tss: 6000, tds: 8000 }
+      },
+      {
+        id: 'wineries',
+        name: 'Wineries',
+        challenges: [
+          "Managing extreme organic 'shock loads' during the short harvest season",
+          "Maintaining treatment plant biology while the plant sits idle the rest of the year"
+        ],
+        typicalValues: { cod: 15000, bod: 7500, ph: 3.8, tss: 2500, tds: 3000 }
       }
     ]
   },
@@ -62,24 +82,31 @@ export const industries = [
     name: 'Textile & Dyeing',
     subCategories: [
       {
+        id: 'pre-treatment',
+        name: 'Pre-treatment',
+        challenges: [
+          "Neutralizing extremely high pH levels (alkalinity)",
+          "Balancing the high cost of chemical neutralization"
+        ],
+        typicalValues: { cod: 1800, bod: 600, ph: 11.5, tss: 300, tds: 3000 }
+      },
+      {
         id: 'dyeing',
         name: 'Dyeing & Printing',
         challenges: [
-          "Complete color removal to meet strict aesthetic discharge limits",
-          "Heavy metal contamination (Chromium) from specific synthetic dyes",
-          "High dissolved salts from reactive dyeing processes"
+          "Complete color removal to meet visual regulatory standards",
+          "Preventing 1 mg/L of dye from turning an entire natural pond purple"
         ],
         typicalValues: { cod: 2500, bod: 800, ph: 9.5, tss: 400, tds: 6000 }
       },
       {
-        id: 'pretreatment',
-        name: 'Pre-treatment (Scouring)',
+        id: 'finishing',
+        name: 'Finishing',
         challenges: [
-          "Neutralizing extremely high pH levels cost-effectively",
-          "Removing natural waxes, pectin, and oils from raw fibers",
-          "Handling high temperatures from continuous bleaching"
+          "Removing persistent 'micro-pollutants'",
+          "Treating water-resistant chemical coatings like PFAS"
         ],
-        typicalValues: { cod: 1800, bod: 600, ph: 11.5, tss: 300, tds: 3000 }
+        typicalValues: { cod: 3000, bod: 1000, ph: 8.0, tss: 500, tds: 4000 }
       }
     ]
   },
@@ -89,23 +116,30 @@ export const industries = [
     subCategories: [
       {
         id: 'chemical-pulping',
-        name: 'Chemical Pulping (Kraft)',
+        name: 'Chemical Pulping',
         challenges: [
-          "Recovery of 'Black Liquor' to prevent ecosystem collapse",
-          "High lignin content creating dark, toxic effluent",
-          "Foul odor management (hydrogen sulfide and mercaptans)"
+          "Recovering the highly toxic 'Black Liquor' for chemical reuse",
+          "Preventing total aquatic ecosystem collapse from lignin discharge"
         ],
         typicalValues: { cod: 8000, bod: 2500, ph: 10.0, tss: 1500, tds: 4500 }
       },
       {
         id: 'bleaching',
-        name: 'Bleaching Units',
+        name: 'Bleaching',
         challenges: [
-          "Reduction of Adsorbable Organic Halides (AOX) which are carcinogenic",
-          "High residual chlorine toxicity",
-          "Complex organochlorine compound degradation"
+          "Reducing Adsorbable Organic Halides (AOX)",
+          "Removing carcinogenic by-products before environmental discharge"
         ],
         typicalValues: { cod: 3000, bod: 900, ph: 3.5, tss: 500, tds: 2500 }
+      },
+      {
+        id: 'recycled',
+        name: 'Recycled Paper',
+        challenges: [
+          "Managing 'stickies' (glues and adhesives) from recycled products",
+          "Filtering out microplastics that foul up ultra-filtration membranes"
+        ],
+        typicalValues: { cod: 4500, bod: 1800, ph: 7.2, tss: 3500, tds: 2500 }
       }
     ]
   },
@@ -114,24 +148,31 @@ export const industries = [
     name: 'Tannery (Leather)',
     subCategories: [
       {
-        id: 'chrome-tanning',
-        name: 'Tanyard (Chrome Tanning)',
+        id: 'beamhouse',
+        name: 'Beamhouse',
         challenges: [
-          "Containment and recovery of toxic Hexavalent Chromium",
-          "Extremely high heavy metal toxicity to biological treatment",
-          "Acidic effluent requiring significant neutralization"
+          "Reducing extremely high Total Dissolved Solids (TDS)",
+          "Managing sulfides that produce lethal 'rotten egg' odors"
+        ],
+        typicalValues: { cod: 6000, bod: 2500, ph: 11.0, tss: 4000, tds: 20000 }
+      },
+      {
+        id: 'tanyard',
+        name: 'Tanyard',
+        challenges: [
+          "High capital cost of Chrome Recovery Units",
+          "Ensuring toxic Hexavalent Chromium does not leak into groundwater"
         ],
         typicalValues: { cod: 4000, bod: 1200, ph: 3.8, tss: 2000, tds: 15000 }
       },
       {
-        id: 'beamhouse',
-        name: 'Beamhouse Operations',
+        id: 'tannery-finishing',
+        name: 'Finishing',
         challenges: [
-          "High sulfide content producing lethal hydrogen sulfide gas (rotten egg odor)",
-          "Massive Total Dissolved Solids (TDS) from hide curing salts",
-          "High suspended solids (hair, flesh, lime)"
+          "Treating complex wastewater matrices",
+          "Handling organic animal fats and synthetic polymers simultaneously"
         ],
-        typicalValues: { cod: 6000, bod: 2500, ph: 11.0, tss: 4000, tds: 20000 }
+        typicalValues: { cod: 5500, bod: 2200, ph: 8.5, tss: 1200, tds: 8000 }
       }
     ]
   },
@@ -141,11 +182,10 @@ export const industries = [
     subCategories: [
       {
         id: 'desalting',
-        name: 'Desalting Units',
+        name: 'Desalting',
         challenges: [
-          "Breaking complex oil-water emulsions",
-          "Preventing extreme corrosion in treatment plant piping",
-          "High dissolved salts mixed with hydrocarbons"
+          "Removing high salt content from crude oil emulsions",
+          "Preventing severe corrosion in the metal pipes of the treatment plant"
         ],
         typicalValues: { cod: 2500, bod: 500, ph: 6.8, tss: 400, tds: 30000 }
       },
@@ -153,11 +193,19 @@ export const industries = [
         id: 'cracking',
         name: 'Catalytic Cracking',
         challenges: [
-          "Destruction of stable phenolic rings toxic to bacteria",
-          "High levels of sour water (hydrogen sulfide and ammonia)",
-          "Trace heavy metals from catalyst degradation"
+          "Breaking down highly stable phenolic chemical rings",
+          "Removing compounds that are strictly toxic to biological treatment bacteria"
         ],
         typicalValues: { cod: 3500, bod: 800, ph: 8.5, tss: 600, tds: 4000 }
+      },
+      {
+        id: 'polymer',
+        name: 'Polymer Production',
+        challenges: [
+          "Filtering out 'nurdles' and microscopic plastic pellets",
+          "Ensuring synthetic polymers do not reach open marine environments"
+        ],
+        typicalValues: { cod: 1500, bod: 300, ph: 7.2, tss: 2000, tds: 1500 }
       }
     ]
   },
@@ -166,22 +214,29 @@ export const industries = [
     name: 'Dairy & Food Processing',
     subCategories: [
       {
-        id: 'dairy',
-        name: 'Milk & Cheese Production',
+        id: 'milk-cheese',
+        name: 'Milk & Cheese',
         challenges: [
-          "Prevention of 'fat caps' in reactors that block oxygen transfer",
-          "High organic shock loads from whey dumps",
-          "Rapid acidification if waste is left untreated (sour milk)"
+          "Preventing 'fat caps' in holding tanks which physically block oxygen",
+          "Preventing rapid anaerobic decay that causes severe plant odors"
         ],
         typicalValues: { cod: 4500, bod: 2500, ph: 5.5, tss: 1200, tds: 1500 }
       },
       {
-        id: 'meat',
-        name: 'Meat & Poultry Processing',
+        id: 'canning',
+        name: 'Fruit/Veg Canning',
         challenges: [
-          "High pathogenic load requiring strict disinfection",
-          "Extreme nutrient loading (Nitrogen/Phosphorus) from blood and proteins",
-          "Floating fat and grease management"
+          "Dealing with highly acidic fruit juices",
+          "Managing rapidly fermenting sugars that drop system pH too fast"
+        ],
+        typicalValues: { cod: 6000, bod: 3500, ph: 4.5, tss: 1800, tds: 1200 }
+      },
+      {
+        id: 'meat-poultry',
+        name: 'Meat/Poultry',
+        challenges: [
+          "Eliminating massive loads of nitrogen and phosphorus (blood/proteins)",
+          "Preventing downstream eutrophication and algae growth in rivers"
         ],
         typicalValues: { cod: 7000, bod: 3500, ph: 6.8, tss: 2500, tds: 2000 }
       }
@@ -193,23 +248,30 @@ export const industries = [
     subCategories: [
       {
         id: 'nitrogenous',
-        name: 'Nitrogenous Plants (Urea)',
+        name: 'Nitrogenous',
         challenges: [
-          "High ammonia toxicity which kills aquatic life instantly",
-          "Prevention of downstream eutrophication (algal blooms)",
-          "High energy cost for ammonia stripping towers"
+          "High energy requirement for ammonia stripping towers",
+          "Removing ammonia which is lethal to fish even in tiny amounts"
         ],
         typicalValues: { cod: 200, bod: 50, ph: 9.5, tss: 100, tds: 3500 }
       },
       {
         id: 'phosphatic',
-        name: 'Phosphatic Plants (DAP)',
+        name: 'Phosphatic',
         challenges: [
-          "Safe management of phosphogypsum stacks",
-          "Fluoride toxicity in effluent",
-          "High acidity and dissolved phosphate levels"
+          "Dealing with large scale 'phosphogypsum' stacks",
+          "Managing severe fluoride toxicity in the wastewater"
         ],
         typicalValues: { cod: 150, bod: 30, ph: 2.5, tss: 800, tds: 8000 }
+      },
+      {
+        id: 'potash',
+        name: 'Potash',
+        challenges: [
+          "Handling sheer volumes of salt (brine) that cannot be biologically 'treated'",
+          "Relying on energy-intensive mechanical evaporation"
+        ],
+        typicalValues: { cod: 100, bod: 0, ph: 7.5, tss: 500, tds: 85000 }
       }
     ]
   },
@@ -221,21 +283,28 @@ export const industries = [
         id: 'coke-ovens',
         name: 'Coke Ovens',
         challenges: [
-          "Lethal cyanide concentrations requiring alkaline chlorination",
-          "High phenol and ammonia stripping requirements",
-          "Presence of carcinogenic polycyclic aromatic hydrocarbons (PAHs)"
+          "Keeping cyanide levels strictly below the legal 'lethal' limit",
+          "Protecting downstream biological microbes from total wipeout"
         ],
         typicalValues: { cod: 4000, bod: 800, ph: 8.8, tss: 500, tds: 5000 }
       },
       {
         id: 'pickling',
-        name: 'Pickling Lines',
+        name: 'Pickling',
         challenges: [
-          "Disposal or regeneration of highly acidic 'Spent Pickle Liquor'",
-          "Massive concentrations of dissolved iron",
-          "Heavy metal precipitation and sludge handling"
+          "Safe disposal or chemical regeneration of 'Spent Pickle Liquor'",
+          "Neutralizing massive volumes of strong industrial acids"
         ],
         typicalValues: { cod: 100, bod: 0, ph: 1.5, tss: 1200, tds: 15000 }
+      },
+      {
+        id: 'continuous-casting',
+        name: 'Continuous Casting',
+        challenges: [
+          "Separating complex 'emulsified' oils from cooling water",
+          "Breaking chemical bonds between oil and water"
+        ],
+        typicalValues: { cod: 800, bod: 150, ph: 8.0, tss: 1500, tds: 2500 }
       }
     ]
   },
@@ -245,23 +314,30 @@ export const industries = [
     subCategories: [
       {
         id: 'cyanide-plating',
-        name: 'Cyanide Bath Plating',
+        name: 'Cyanide Plating',
         challenges: [
-          "Prevention of lethal cyanide gas formation during pH adjustment",
-          "Complete destruction of cyanide complexes before metal precipitation",
-          "Handling extremely toxic sludges"
+          "Preventing lethal 'Cyanide gas' formation during treatment",
+          "Ensuring operator safety during the chemical oxidation phase"
         ],
         typicalValues: { cod: 300, bod: 50, ph: 10.5, tss: 200, tds: 8000 }
       },
       {
-        id: 'acid-plating',
-        name: 'Acid Pickling & Galvanizing',
+        id: 'acid-pickling',
+        name: 'Acid Pickling',
         challenges: [
-          "Precise pH control to precipitate dissolved zinc/copper as solids",
-          "Massive sludge generation requiring hazardous landfill disposal",
-          "Highly corrosive raw effluent"
+          "Maintaining precise pH control loops to precipitate heavy metals",
+          "Managing the massive volumes of toxic solid sludge generated"
         ],
         typicalValues: { cod: 150, bod: 20, ph: 2.0, tss: 600, tds: 12000 }
+      },
+      {
+        id: 'anodizing',
+        name: 'Anodizing',
+        challenges: [
+          "Managing extremely high sludge volumes",
+          "Handling continuous aluminum precipitation from acid baths"
+        ],
+        typicalValues: { cod: 250, bod: 50, ph: 2.5, tss: 800, tds: 9000 }
       }
     ]
   },
@@ -273,21 +349,28 @@ export const industries = [
         id: 'cooling',
         name: 'Cooling Systems',
         challenges: [
-          "Thermal pollution (heat discharge) shocking local aquatic ecosystems",
-          "Biocide and anti-scaling chemical residues from blowdown",
-          "Massive volumetric flow making treatment expensive"
+          "Meeting strict 'Delta-T' (temperature difference) environmental laws",
+          "Preventing thermal shock that cooks local aquatic life"
         ],
         typicalValues: { cod: 50, bod: 10, ph: 7.5, tss: 50, tds: 1500 }
       },
       {
-        id: 'ash-pond',
-        name: 'Ash Pond Effluent',
+        id: 'ash-handling',
+        name: 'Ash Handling',
         challenges: [
-          "Leaching of heavy metals (Arsenic, Mercury, Lead) into groundwater",
-          "High suspended silt and fly ash",
-          "Alkaline pH from ash interaction with water"
+          "Preventing toxic heavy metals from leaching out of ash ponds",
+          "Protecting local groundwater aquifers from contamination"
         ],
         typicalValues: { cod: 100, bod: 10, ph: 9.5, tss: 3000, tds: 2500 }
+      },
+      {
+        id: 'fgd',
+        name: 'FGD (Flue Gas Desulfurization)',
+        challenges: [
+          "Removing persistent 'Selenium' and 'Mercury' traces",
+          "Treating metals that are notoriously difficult to strip from water"
+        ],
+        typicalValues: { cod: 150, bod: 0, ph: 6.0, tss: 3500, tds: 12000 }
       }
     ]
   },
@@ -296,24 +379,31 @@ export const industries = [
     name: 'Sugar Industry',
     subCategories: [
       {
-        id: 'milling',
-        name: 'Cane Crushing & Extraction',
+        id: 'cane-crushing',
+        name: 'Cane Crushing',
         challenges: [
-          "Rapid growth of filamentous bacteria causing sludge bulking",
-          "High organic spills creating sudden BOD shock loads",
-          "Foul odors from stagnant sugar water fermenting"
+          "Preventing rapid growth of 'filamentous' bacteria",
+          "Stopping treatment sludge from floating instead of settling"
         ],
         typicalValues: { cod: 4500, bod: 2000, ph: 5.5, tss: 1500, tds: 2000 }
       },
       {
         id: 'clarification',
-        name: 'Clarification & Evaporation',
+        name: 'Clarification',
         challenges: [
-          "Management of bulky 'filter press mud'",
-          "Sulfur-rich condensates causing toxicity",
-          "High temperature effluent from evaporators"
+          "Managing 'Press Mud'",
+          "Handling massive volumes of bulky, wet, solid organic waste"
         ],
         typicalValues: { cod: 3000, bod: 1500, ph: 6.0, tss: 2000, tds: 1800 }
+      },
+      {
+        id: 'distillery-integration',
+        name: 'Distillery Integration',
+        challenges: [
+          "Balancing heat transfer between two connected plants",
+          "Managing extreme combined organic load (Sugar + Molasses waste)"
+        ],
+        typicalValues: { cod: 65000, bod: 28000, ph: 4.8, tss: 3500, tds: 18000 }
       }
     ]
   },
@@ -322,24 +412,31 @@ export const industries = [
     name: 'Pesticide & Agrochemicals',
     subCategories: [
       {
-        id: 'insecticide',
-        name: 'Insecticide Synthesis',
+        id: 'insecticides',
+        name: 'Insecticides',
         challenges: [
-          "Total destruction of neurotoxic organophosphates",
-          "Preventing bioaccumulation of Persistent Organic Pollutants (POPs)",
-          "Extremely high toxicity to biological treatment microbes"
+          "Total destruction of neurotoxic chemical molecules",
+          "Ensuring active chemicals do not enter the human water cycle"
         ],
         typicalValues: { cod: 15000, bod: 2000, ph: 6.5, tss: 500, tds: 10000 }
       },
       {
-        id: 'herbicide',
-        name: 'Herbicide Production',
+        id: 'herbicides',
+        name: 'Herbicides',
         challenges: [
-          "Effluent specifically designed to kill plant life and algae",
-          "Presence of complex chlorinated aromatic compounds",
-          "Requirement for advanced oxidation processes (AOP)"
+          "Preventing the wastewater from killing the biological film inside the WTP",
+          "Treating chemicals explicitly designed to kill plant/algae life"
         ],
         typicalValues: { cod: 12000, bod: 1500, ph: 4.5, tss: 400, tds: 8000 }
+      },
+      {
+        id: 'fungicides',
+        name: 'Fungicides',
+        challenges: [
+          "Removing heavy metal catalysts like copper",
+          "Preventing inhibition of vital bacterial growth in secondary treatment"
+        ],
+        typicalValues: { cod: 10000, bod: 1800, ph: 6.0, tss: 800, tds: 7500 }
       }
     ]
   },
@@ -349,21 +446,28 @@ export const industries = [
     subCategories: [
       {
         id: 'chlor-alkali',
-        name: 'Chlor-Alkali Plants',
+        name: 'Chlor-Alkali',
         challenges: [
-          "Legacy mercury remediation from older cell technologies",
-          "Extremely high salt (brine) and chlorine concentrations",
-          "High alkalinity requiring massive acid dosing for neutralization"
+          "Legacy challenge of environmental mercury remediation in older plants",
+          "Balancing extreme salt loading in effluent"
         ],
         typicalValues: { cod: 200, bod: 0, ph: 12.5, tss: 100, tds: 45000 }
       },
       {
-        id: 'dyes-pigments',
-        name: 'Dye & Pigment Manufacturing',
+        id: 'acid-alkali',
+        name: 'Acid/Alkali',
         challenges: [
-          "Intense color pollution visible even at parts-per-billion levels",
-          "High Chemical Oxygen Demand (COD) that is entirely non-biodegradable",
-          "Heavy metal oxides (Titanium, Copper) in suspension"
+          "High operational cost of continuously neutralizing chemicals",
+          "Buying massive volumes of lime just to fight industrial acid"
+        ],
+        typicalValues: { cod: 100, bod: 0, ph: 1.5, tss: 200, tds: 25000 }
+      },
+      {
+        id: 'dye-pigments',
+        name: 'Dye/Pigments',
+        challenges: [
+          "Reducing Chemical Oxygen Demand (COD)",
+          "Treating loads often 10x higher than standard domestic sewage"
         ],
         typicalValues: { cod: 25000, bod: 3000, ph: 7.0, tss: 1500, tds: 15000 }
       }
@@ -374,22 +478,29 @@ export const industries = [
     name: 'Slaughterhouses & Rendering',
     subCategories: [
       {
-        id: 'killing-floor',
-        name: 'Lairage & Killing Floor',
+        id: 'lairage',
+        name: 'Lairage',
         challenges: [
-          "Screening out large solids (manure, straw, hooves) that break pumps",
-          "Extreme organic loading from pure blood",
-          "High pathogen risk requiring stringent final disinfection"
+          "Screening out large, destructive solids (manure/straw) that clog pumps",
+          "Managing unpredictable flow surges"
         ],
         typicalValues: { cod: 8000, bod: 4000, ph: 7.2, tss: 3500, tds: 3000 }
       },
       {
-        id: 'rendering',
-        name: 'Rendering Plants',
+        id: 'evisceration',
+        name: 'Evisceration',
         challenges: [
-          "Cooling high-temperature effluent",
-          "Massive fat, oil, and grease (FOG) loading requiring DAF systems",
-          "Severe odor complaints if tanks go anaerobic"
+          "Managing extreme high-protein 'grease' that coats every surface of the plant",
+          "Controlling pathogenic loads"
+        ],
+        typicalValues: { cod: 12000, bod: 6000, ph: 6.8, tss: 4500, tds: 2800 }
+      },
+      {
+        id: 'rendering',
+        name: 'Rendering',
+        challenges: [
+          "Cooling and treating high-temperature, high-fat effluent",
+          "Preventing the system from going anaerobic and releasing putrid odors"
         ],
         typicalValues: { cod: 15000, bod: 8000, ph: 6.5, tss: 5000, tds: 4000 }
       }
@@ -403,19 +514,26 @@ export const industries = [
         id: 'amd',
         name: 'Acid Mine Drainage',
         challenges: [
-          "Passive, perpetual treatment long after a mine closes",
-          "Extreme acidity dissolving surrounding rock and soil",
-          "High concentrations of dissolved iron and sulfur turning water orange"
+          "Treating water indefinitely, long after the mine has closed",
+          "Managing passive treatment system failures"
         ],
         typicalValues: { cod: 50, bod: 0, ph: 2.5, tss: 1200, tds: 6000 }
       },
       {
-        id: 'cyanide-leach',
-        name: 'Cyanide Leaching (Gold)',
+        id: 'tailings',
+        name: 'Tailings Dams',
         challenges: [
-          "Toxic cyanide runoff from tailings dams",
-          "Requirement for chemical destruction (INCO process) before release",
-          "Heavy metal co-contamination (Arsenic, Copper)"
+          "Ensuring structural dam stability",
+          "Preventing catastrophic spills of toxic, heavy metal laden sludge"
+        ],
+        typicalValues: { cod: 100, bod: 15, ph: 8.5, tss: 8500, tds: 4000 }
+      },
+      {
+        id: 'cyanide-leaching',
+        name: 'Cyanide Leaching',
+        challenges: [
+          "High operational cost of 'Alkaline Chlorination'",
+          "Requirement to completely chemically destroy cyanide before release"
         ],
         typicalValues: { cod: 300, bod: 20, ph: 9.5, tss: 2000, tds: 4500 }
       }
@@ -423,25 +541,32 @@ export const industries = [
   },
   {
     id: 'fmcg',
-    name: 'Fast Moving Consumer Goods',
+    name: 'FMCG (Fast Moving Consumer Goods)',
     subCategories: [
       {
         id: 'personal-care',
-        name: 'Personal Care (Soaps/Shampoos)',
+        name: 'Personal Care',
         challenges: [
-          "Massive foaming in aeration tanks due to high surfactant load",
-          "Breaking down synthetic fragrances and parabens",
-          "Emulsified oils bypassing standard separation"
+          "Breaking down synthetic fragrances and preservatives",
+          "Treating compounds chemically designed to resist bacterial decay"
         ],
         typicalValues: { cod: 5000, bod: 2500, ph: 8.5, tss: 800, tds: 2000 }
       },
       {
-        id: 'cosmetics',
-        name: 'Cosmetic Manufacturing',
+        id: 'home-care',
+        name: 'Home Care',
         challenges: [
-          "Filtering out waterproof waxes and oils",
-          "Microplastic and glitter pollution",
-          "Titanium dioxide and zinc oxide particulate removal"
+          "Removing high levels of phosphates",
+          "Complying with regional bans to protect lakes from algal blooms"
+        ],
+        typicalValues: { cod: 6500, bod: 3000, ph: 9.2, tss: 1000, tds: 4500 }
+      },
+      {
+        id: 'cosmetics',
+        name: 'Cosmetics',
+        challenges: [
+          "Filtering out waterproof waxes and synthetic oils",
+          "Handling compounds that easily bypass standard grit and oil separation chambers"
         ],
         typicalValues: { cod: 8000, bod: 3000, ph: 7.5, tss: 1200, tds: 2500 }
       }
