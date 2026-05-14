@@ -84,29 +84,137 @@ export const industries = [
       {
         id: 'pre-treatment',
         name: 'Pre-treatment',
-        challenges: [
-          "Neutralizing extremely high pH levels (alkalinity)",
-          "Balancing the high cost of chemical neutralization"
+        processStages: [
+          'Desizing',
+          'Scouring',
+          'Bleaching',
+          'Mercerizing'
         ],
-        typicalValues: { cod: 1800, bod: 600, ph: 11.5, tss: 300, tds: 3000 }
+        pollutants: [
+          'Alkaline chemicals',
+          'Detergents',
+          'Starch',
+          'Hydrogen peroxide',
+          'Suspended solids'
+        ],
+        challenges: [
+          "Neutralizing extremely high pH levels caused by caustic soda usage",
+          "Reducing high TDS generated from chemical washing operations",
+          "Managing fluctuating alkalinity during batch processing",
+          "Minimizing sludge generation during neutralization"
+        ],
+        wastewaterCharacteristics: {
+          nature: 'Highly alkaline with moderate organic load',
+          color: 'Low to moderate',
+          biodegradability: 'Medium'
+        },
+        typicalValues: {
+          cod: 1800,
+          bod: 600,
+          ph: 11.5,
+          tss: 300,
+          tds: 3000,
+          conductivity: 4200,
+          temperature: 38
+        },
+        realisticRanges: {
+          ph: [10.0, 12.5],
+          bod: [300, 1200],
+          cod: [1000, 3500],
+          tss: [150, 800],
+          tds: [2000, 6000]
+        }
       },
+
       {
-        id: 'dyeing',
+        id: 'dyeing-printing',
         name: 'Dyeing & Printing',
-        challenges: [
-          "Complete color removal to meet visual regulatory standards",
-          "Preventing 1 mg/L of dye from turning an entire natural pond purple"
+        processStages: [
+          'Reactive Dyeing',
+          'Pigment Printing',
+          'Washing',
+          'Color Fixing'
         ],
-        typicalValues: { cod: 2500, bod: 800, ph: 9.5, tss: 400, tds: 6000 }
+        pollutants: [
+          'Synthetic dyes',
+          'Salts',
+          'Heavy metals',
+          'Pigments',
+          'Urea',
+          'Surfactants'
+        ],
+        challenges: [
+          "Complete color removal to meet visual discharge standards",
+          "Managing extremely high salt concentrations from reactive dyes",
+          "Preventing even small dye concentrations from visibly contaminating water bodies",
+          "Treating non-biodegradable dye compounds resistant to biological treatment"
+        ],
+        wastewaterCharacteristics: {
+          nature: 'Highly colored with high dissolved salts',
+          color: 'Very high',
+          biodegradability: 'Low to medium'
+        },
+        typicalValues: {
+          cod: 2500,
+          bod: 800,
+          ph: 9.5,
+          tss: 400,
+          tds: 6000,
+          conductivity: 8500,
+          temperature: 42
+        },
+        realisticRanges: {
+          ph: [8.0, 11.0],
+          bod: [500, 2000],
+          cod: [1500, 7000],
+          tss: [250, 1500],
+          tds: [4000, 12000]
+        }
       },
+
       {
         id: 'finishing',
         name: 'Finishing',
-        challenges: [
-          "Removing persistent 'micro-pollutants'",
-          "Treating water-resistant chemical coatings like PFAS"
+        processStages: [
+          'Softening',
+          'Coating',
+          'Waterproofing',
+          'Flame Retardant Treatment'
         ],
-        typicalValues: { cod: 3000, bod: 1000, ph: 8.0, tss: 500, tds: 4000 }
+        pollutants: [
+          'Resins',
+          'PFAS',
+          'Formaldehyde compounds',
+          'Silicones',
+          'Micro-pollutants'
+        ],
+        challenges: [
+          "Removing persistent micro-pollutants from treated water",
+          "Treating PFAS and water-resistant coating chemicals",
+          "Reducing toxicity from finishing auxiliaries",
+          "Managing low-biodegradability wastewater streams"
+        ],
+        wastewaterCharacteristics: {
+          nature: 'Chemically complex with persistent organics',
+          color: 'Moderate',
+          biodegradability: 'Low'
+        },
+        typicalValues: {
+          cod: 3000,
+          bod: 1000,
+          ph: 8.0,
+          tss: 500,
+          tds: 4000,
+          conductivity: 5200,
+          temperature: 36
+        },
+        realisticRanges: {
+          ph: [6.5, 9.0],
+          bod: [700, 2500],
+          cod: [2000, 9000],
+          tss: [300, 1800],
+          tds: [2500, 7000]
+        }
       }
     ]
   },
