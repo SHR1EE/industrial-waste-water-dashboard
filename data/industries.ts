@@ -77,39 +77,87 @@ export const industries = [
       }
     ]
   },
-  {
-    id: 'textile',
-    name: 'Textile & Dyeing',
-    subCategories: [
-      {
-        id: 'pre-treatment',
-        name: 'Pre-treatment',
-        challenges: [
-          "Neutralizing extremely high pH levels (alkalinity)",
-          "Balancing the high cost of chemical neutralization"
-        ],
-        typicalValues: { cod: 1800, bod: 600, ph: 11.5, tss: 300, tds: 3000 }
-      },
-      {
-        id: 'dyeing',
-        name: 'Dyeing & Printing',
-        challenges: [
-          "Complete color removal to meet visual regulatory standards",
-          "Preventing 1 mg/L of dye from turning an entire natural pond purple"
-        ],
-        typicalValues: { cod: 2500, bod: 800, ph: 9.5, tss: 400, tds: 6000 }
-      },
-      {
-        id: 'finishing',
-        name: 'Finishing',
-        challenges: [
-          "Removing persistent 'micro-pollutants'",
-          "Treating water-resistant chemical coatings like PFAS"
-        ],
-        typicalValues: { cod: 3000, bod: 1000, ph: 8.0, tss: 500, tds: 4000 }
+{
+  id: 'textile',
+  name: 'Textile & Dyeing',
+  subCategories: [
+    {
+      id: 'cotton-processing',
+      name: 'Cotton Processing',
+      challenges: [
+        "Managing extremely high salt concentrations from reactive dyeing operations",
+        "Reducing excessive freshwater consumption during repeated washing cycles"
+      ],
+      typicalValues: {
+        cod: 2500,
+        bod: 900,
+        ph: 10.5,
+        tss: 700,
+        tds: 6000
       }
-    ]
-  },
+    },
+    {
+      id: 'synthetic-processing',
+      name: 'Synthetic Textile Processing',
+      challenges: [
+        "Treating non-biodegradable synthetic dye compounds",
+        "Removing persistent organic finishing chemicals and dye carriers"
+      ],
+      typicalValues: {
+        cod: 4000,
+        bod: 700,
+        ph: 8.5,
+        tss: 500,
+        tds: 4500
+      }
+    },
+    {
+      id: 'wool-processing',
+      name: 'Wool Processing',
+      challenges: [
+        "Removing lanolin-rich grease and suspended organic matter",
+        "Handling extremely high biodegradable organic loads from scouring"
+      ],
+      typicalValues: {
+        cod: 6000,
+        bod: 3000,
+        ph: 7.8,
+        tss: 1200,
+        tds: 3500
+      }
+    },
+    {
+      id: 'denim-washing',
+      name: 'Denim & Garment Washing',
+      challenges: [
+        "Controlling indigo dye discharge into nearby water bodies",
+        "Managing sludge and suspended solids from stone washing processes"
+      ],
+      typicalValues: {
+        cod: 5000,
+        bod: 1800,
+        ph: 9.2,
+        tss: 2000,
+        tds: 5000
+      }
+    },
+    {
+      id: 'textile-printing',
+      name: 'Textile Printing',
+      challenges: [
+        "Removing persistent pigment-based color compounds from wastewater",
+        "Treating solvent-rich effluents with very high COD concentrations"
+      ],
+      typicalValues: {
+        cod: 7000,
+        bod: 2200,
+        ph: 8.8,
+        tss: 900,
+        tds: 4000
+      }
+    }
+  ]
+},
   {
     id: 'pulp-paper',
     name: 'Pulp & Paper Mills',
